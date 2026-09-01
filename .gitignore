@@ -1,0 +1,36 @@
+# Environments and Secrets
+.env
+.env.*
+*.env
+venv/
+.venv/
+env/
+ENV/
+
+# Python caching & build
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+
+# Node / Frontend build
+node_modules/
+dist/
+dist-ssr/
+*.local
+.eslintcache
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDEs
+.idea/
+.vscode/
+*.swp
+*.swo
