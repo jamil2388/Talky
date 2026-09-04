@@ -19,3 +19,13 @@
 5.  **Verification:**
     *   Ran `pytest` to confirm all 7 test cases passed (tests for API endpoints and schemas).
     *   Verified the integration successfully.
+
+## Phase 2: Modular AI Services (TDD Service Wrappers)
+**Status:** In Progress
+
+### Steps Performed:
+1.  **Branch Initialization:** Switched to `feature/ai-services` to isolate Phase 2 development.
+2.  **STT-Service Implementation:**
+    *   Created `backend/tests/test_stt_service.py` to define STT wrapper requirements.
+    *   Implemented `STTService` in `backend/app/services/stt_service.py`.
+    *   Verified successful implementation by running pytest.
