@@ -11,15 +11,15 @@ This file is used to track the major development phases, deliverables, and branc
 - [x] Verify that all base endpoint tests pass successfully.
 
 ## Phase 2: Modular AI Services (TDD Service Wrappers)
-- [ ] Branch : feature/ai-services
-- [ ] **Speech-to-Text Wrapper (STT):**
-  - [ ] Write tests to verify STT wrapper behavior using local audio files (success and error conditions).
-  - [ ] Implement `STTService` class using a local STT engine (e.g., HuggingFace Transformers, Whisper-cpp, or Faster-Whisper).
-  - [ ] Run STT tests and ensure the service successfully transcribes standard test audio files.
-- [ ] **Language Model Wrapper (LLM):**
-  - [ ] Write tests to verify LLM response restrictions (simple English, max one sentence, child-friendly).
-  - [ ] Implement `LLMService` class with a local LLM runner integration and custom system prompts.
-  - [ ] Run LLM tests and verify prompt constraints are strictly satisfied.
+- [x] Branch : feature/ai-services
+- [x] **Speech-to-Text Wrapper (STT):**
+  - [x] Write tests to verify STT wrapper behavior using local audio files (success and error conditions).
+  - [x] Implement `STTService` class using a local STT engine (e.g., HuggingFace Transformers, Whisper-cpp, or Faster-Whisper).
+  - [x] Run STT tests and ensure the service successfully transcribes standard test audio files.
+- [x] **Language Model Wrapper (LLM):**
+  - [x] Write tests to verify LLM response restrictions (simple English, max one sentence, child-friendly).
+  - [x] Implement `LLMService` class with a local LLM runner integration and custom system prompts.
+  - [x] Run LLM tests and verify prompt constraints are strictly satisfied.
 - [ ] **Text-to-Speech Wrapper (TTS):**
   - [ ] Write tests to verify audio file generation, file output pathing, and metadata completeness.
   - [ ] Implement `TTSService` class using a local TTS engine (e.g., pyttsx3, gTTS offline, Coqui TTS, or equivalent).

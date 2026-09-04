@@ -28,4 +28,7 @@
 2.  **STT-Service Implementation:**
     *   Created `backend/tests/test_stt_service.py` to define STT wrapper requirements.
     *   Implemented `STTService` in `backend/app/services/stt_service.py`.
+3.  **LLM-Service Implementation:**
+    *   Created `backend/tests/test_llm_service.py` to define LLM wrapper constraints (single sentence, simple English).
+    *   Implemented `LLMService` in `backend/app/services/llm_service.py` with placeholder engine integration.
     *   Verified successful implementation by running pytest.
