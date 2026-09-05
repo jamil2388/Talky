@@ -3,12 +3,12 @@
 This file is used to track the major development phases, deliverables, and branches for the Local Voice Conversation Assistant. We adhere strictly to Test-Driven Development (TDD), meaning each milestone's implementation is guided and verified by pre-written test suites.
 
 ## Phase 1: Backend Base & Mock Services (TDD Core)
-- [ ] Branch : feature/backend-core
-- [ ] Write unit and integration tests first for API schemas and basic endpoint structure (`POST /api/conversation/start` and `POST /api/conversation`).
-- [ ] Set up the FastAPI folder structure, configuration, and dependencies (`requirements.txt`).
-- [ ] Implement request and response Pydantic schemas in `app/schemas/conversation.py`.
-- [ ] Create stub endpoint handlers in `app/api/conversation.py` that return mock response data to satisfy pre-written API tests.
-- [ ] Verify that all base endpoint tests pass successfully.
+- [x] Branch : feature/backend-core
+- [x] Write unit and integration tests first for API schemas and basic endpoint structure (`POST /api/conversation/start` and `POST /api/conversation`).
+- [x] Set up the FastAPI folder structure, configuration, and dependencies (`requirements.txt`).
+- [x] Implement request and response Pydantic schemas in `app/schemas/conversation.py`.
+- [x] Create stub endpoint handlers in `app/api/conversation.py` that return mock response data to satisfy pre-written API tests.
+- [x] Verify that all base endpoint tests pass successfully.
 
 ## Phase 2: Modular AI Services (TDD Service Wrappers)
 - [ ] Branch : feature/ai-services
