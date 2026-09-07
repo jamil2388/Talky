@@ -24,10 +24,10 @@ This file is used to track the major development phases, deliverables, and branc
   - [x] Write tests to verify audio file generation, file output pathing, and metadata completeness.
   - [x] Implement `TTSService` class using a local TTS engine (e.g., pyttsx3, gTTS offline, Coqui TTS, or equivalent).
   - [x] Run TTS tests and ensure playable audio files are compiled correctly offline.
-- [ ] **Conversation Context Manager:**
-  - [ ] Write unit tests to verify context truncation (ensuring history stays within 3 to 6 turns) and role alternation.
-  - [ ] Implement `ConversationManager` class maintaining state/history limits.
-  - [ ] Run context manager tests and ensure correct context assembly.
+- [x] **Conversation Context Manager:**
+  - [x] Write unit tests to verify context truncation (ensuring history stays within 3 to 6 turns) and role alternation.
+  - [x] Implement `ConversationManager` class maintaining state/history limits.
+  - [x] Run context manager tests and ensure correct context assembly.
 
 ## Phase 3: Connected Backend Pipeline Integration
 - [ ] Branch : feature/backend-integration

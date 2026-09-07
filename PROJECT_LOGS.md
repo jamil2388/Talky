@@ -32,8 +32,12 @@
     *   Created `backend/tests/test_llm_service.py` to define LLM wrapper constraints (single sentence, simple English).
     *   Implemented `LLMService` in `backend/app/services/llm_service.py` with placeholder engine integration.
     *   Verified successful implementation by running pytest.
-4.  **TTS-Service Implementation:**
+4. **TTS-Service Implementation:**
     *   Added `pyttsx3` to `requirements.txt`.
     *   Created `backend/tests/test_tts_service.py` to verify audio file generation.
     *   Implemented `TTSService` in `backend/app/services/tts_service.py` using `pyttsx3`.
+    *   Verified successful implementation by running pytest.
+5.  **Conversation-Manager Implementation:**
+    *   Created `backend/tests/test_conversation_manager.py` to define history truncation and role alternation requirements.
+    *   Implemented `ConversationManager` in `backend/app/services/conversation_manager.py`.
     *   Verified successful implementation by running pytest.
