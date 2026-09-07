@@ -20,10 +20,10 @@ This file is used to track the major development phases, deliverables, and branc
   - [x] Write tests to verify LLM response restrictions (simple English, max one sentence, child-friendly).
   - [x] Implement `LLMService` class with a local LLM runner integration and custom system prompts.
   - [x] Run LLM tests and verify prompt constraints are strictly satisfied.
-- [ ] **Text-to-Speech Wrapper (TTS):**
-  - [ ] Write tests to verify audio file generation, file output pathing, and metadata completeness.
-  - [ ] Implement `TTSService` class using a local TTS engine (e.g., pyttsx3, gTTS offline, Coqui TTS, or equivalent).
-  - [ ] Run TTS tests and ensure playable audio files are compiled correctly offline.
+- [x] **Text-to-Speech Wrapper (TTS):**
+  - [x] Write tests to verify audio file generation, file output pathing, and metadata completeness.
+  - [x] Implement `TTSService` class using a local TTS engine (e.g., pyttsx3, gTTS offline, Coqui TTS, or equivalent).
+  - [x] Run TTS tests and ensure playable audio files are compiled correctly offline.
 - [ ] **Conversation Context Manager:**
   - [ ] Write unit tests to verify context truncation (ensuring history stays within 3 to 6 turns) and role alternation.
   - [ ] Implement `ConversationManager` class maintaining state/history limits.
