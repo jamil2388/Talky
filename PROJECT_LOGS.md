@@ -41,3 +41,13 @@
     *   Created `backend/tests/test_conversation_manager.py` to define history truncation and role alternation requirements.
     *   Implemented `ConversationManager` in `backend/app/services/conversation_manager.py`.
     *   Verified successful implementation by running pytest.
+
+## Phase 3: Connected Backend Pipeline Integration
+**Status:** In Progress
+
+### Steps Performed:
+1.  **Branch Initialization:** Created and switched to `feature/backend-integration` to isolate Phase 3 development.
+2.  **Pipeline Integration:**
+    *   Created `backend/tests/test_integration.py` to define end-to-end pipeline behavior (`Audio -> STT -> History -> LLM -> TTS -> Audio`).
+    *   Implemented `ConversationService` in `backend/app/services/conversation_service.py` to orchestrate STT, LLM, TTS, and ConversationManager.
+    *   Verified full pipeline success via integration tests.
