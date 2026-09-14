@@ -51,3 +51,8 @@
     *   Created `backend/tests/test_integration.py` to define end-to-end pipeline behavior (`Audio -> STT -> History -> LLM -> TTS -> Audio`).
     *   Implemented `ConversationService` in `backend/app/services/conversation_service.py` to orchestrate STT, LLM, TTS, and ConversationManager.
     *   Verified full pipeline success via integration tests.
+3.  **Refactoring & Debugging:**
+    *   Identified and resolved deadlock in `test_api.py` caused by synchronous `pyttsx3` usage.
+    *   Refactored `conversation.py` to use FastAPI Dependency Injection (`Depends`) to provide `ConversationService`.
+    *   Created `tests/mock_services.py` and updated `test_api.py` to use `dependency_overrides` for mocking services in tests.
+    *   Verified that all API tests now pass without deadlocks.
