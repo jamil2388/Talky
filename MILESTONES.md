@@ -30,11 +30,11 @@ This file is used to track the major development phases, deliverables, and branc
   - [x] Run context manager tests and ensure correct context assembly.
 
 ## Phase 3: Connected Backend Pipeline Integration
-- [ ] Branch : feature/backend-integration
-- [ ] Write comprehensive integration tests for the full pipeline (`Audio file input -> STT -> History Context -> LLM -> TTS -> Audio output response`).
-- [ ] Refactor `ConversationService` in `app/services/conversation_service.py` to orchestrate actual service instances.
-- [ ] Update endpoints in `app/api/conversation.py` to route real requests through the complete orchestration pipeline.
-- [ ] Verify the full pipeline's functional success using integration tests offline.
+- [x] Branch : feature/backend-integration
+- [x] Write comprehensive integration tests for the full pipeline (`Audio file input -> STT -> History Context -> LLM -> TTS -> Audio output response`).
+- [x] Refactor `ConversationService` in `app/services/conversation_service.py` to orchestrate actual service instances.
+- [x] **Update endpoints in `app/api/conversation.py` to route real requests through the complete orchestration pipeline.**
+- [x] **Verify the full pipeline's functional success using integration tests offline.**
 
 ## Phase 4: Frontend Development & Component Testing
 - [ ] Branch : feature/frontend-ui
