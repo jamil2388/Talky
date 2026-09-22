@@ -56,3 +56,14 @@
     *   Refactored `conversation.py` to use FastAPI Dependency Injection (`Depends`) to provide `ConversationService`.
     *   Created `tests/mock_services.py` and updated `test_api.py` to use `dependency_overrides` for mocking services in tests.
     *   Verified that all API tests now pass without deadlocks.
+
+## Phase 4: Frontend Development & Component Testing
+**Status:** In Progress
+
+### Steps Performed:
+1.  **Project Initialization:** Initialized React frontend with Vite.
+2.  **Test Environment:** Configured Vitest, React Testing Library, and JSDOM.
+3.  **API Service (TDD):**
+    *   Implemented API service helper (`frontend/src/services/api.js`) for interacting with the backend.
+    *   Defined comprehensive test suite (`frontend/src/services/api.test.js`).
+    *   Resolved `FormData` compatibility in the testing environment.
