@@ -68,3 +68,8 @@
     *   Defined comprehensive test suite (`frontend/src/services/api.test.js`).
     *   Resolved `FormData` compatibility in the testing environment.
     *   Verified all frontend API service unit tests pass successfully (`vitest --run`).
+4.  **AudioRecorder Component (TDD):**
+    *   Implemented unit tests in `frontend/src/components/AudioRecorder.test.jsx` covering idle and recording/stopping states with MediaRecorder mock.
+    *   Implemented `AudioRecorder` component in `frontend/src/components/AudioRecorder.jsx` and styling in `AudioRecorder.css`.
+    *   Resolved media stream mock handling (`getTracks`) to ensure clean test runs without unhandled exceptions.
+    *   Verified all frontend tests pass successfully (`vitest --run`).
