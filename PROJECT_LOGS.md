@@ -73,3 +73,9 @@
     *   Implemented `AudioRecorder` component in `frontend/src/components/AudioRecorder.jsx` and styling in `AudioRecorder.css`.
     *   Resolved media stream mock handling (`getTracks`) to ensure clean test runs without unhandled exceptions.
     *   Verified all frontend tests pass successfully (`vitest --run`).
+
+## Phase 5: Real Local AI Services Integration
+**Status:** Pending
+
+## Phase 6: Refinement, Latency & Final Verification
+**Status:** Pending

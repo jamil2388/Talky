@@ -36,15 +36,22 @@ This file is used to track the major development phases, deliverables, and branc
 - [x] **Update endpoints in `app/api/conversation.py` to route real requests through the complete orchestration pipeline.**
 - [x] **Verify the full pipeline's functional success using integration tests offline.**
 
-## Phase 4: Frontend Development & Component Testing
+## Phase 4: Frontend Development & Component Testing (Paused for Phase 5)
 - [ ] Branch : feature/frontend-ui
 - [x] Initialize the React project with Vite, setup test suites (Jest/React Testing Library) and write basic component unit tests.
 - [x] Develop and test `AudioRecorder.jsx` for recording voice from browser microphone and handling state.
-- [ ] Develop and test `Conversation.jsx` for displaying history logs and initiating conversations.
 - [x] Implement API helper in `api.js` to send recorded audio blobs and receive JSON/Audio outputs.
-- [ ] Assemble all frontend parts in `App.jsx`, running local component/integration tests to ensure correct frontend flow.
+- [ ] **Pending (Deferred to after Phase 5):** Develop and test `Conversation.jsx` for displaying history logs and initiating conversations.
+- [ ] **Pending (Deferred to after Phase 5):** Assemble all frontend parts in `App.jsx`, running local component/integration tests to ensure correct frontend flow with live backend.
 
-## Phase 5: Refinement, Latency & Final Verification
+## Phase 5: Real Local AI Services Integration
+- [ ] Branch : feature/real-ai-services
+- [ ] Implement robust local STT service (e.g., faster-whisper) with proper audio preprocessing and transcription.
+- [ ] Integrate local LLM runner (e.g., Ollama or lightweight transformers/llama-cpp) with strict prompt constraints (simple English, single sentence).
+- [ ] Configure local TTS service to output clean speech audio and support static file serving via FastAPI.
+- [ ] Verify full end-to-end backend integration pipeline with real local models via integration tests.
+
+## Phase 6: Refinement, Latency & Final Verification
 - [ ] Branch : feature/refinement-optimization
 - [ ] Add latency instrumentation tests to benchmark local pipeline execution.
 - [ ] Refine local model configurations and quantization to optimize execution speed on standard hardware.
