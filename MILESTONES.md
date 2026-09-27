@@ -37,7 +37,7 @@ This file is used to track the major development phases, deliverables, and branc
 - [x] **Verify the full pipeline's functional success using integration tests offline.**
 
 ## Phase 4: Frontend Development & Component Testing (Paused for Phase 5)
-- [ ] Branch : feature/frontend-ui
+- [x] Branch : feature/frontend-ui
 - [x] Initialize the React project with Vite, setup test suites (Jest/React Testing Library) and write basic component unit tests.
 - [x] Develop and test `AudioRecorder.jsx` for recording voice from browser microphone and handling state.
 - [x] Implement API helper in `api.js` to send recorded audio blobs and receive JSON/Audio outputs.
