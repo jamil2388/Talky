@@ -1,6 +1,7 @@
 import pytest
 import os
 import shutil
+from unittest.mock import MagicMock
 from app.services.stt_service import STTService
 from app.services.llm_service import LLMService
 from app.services.tts_service import TTSService
@@ -19,6 +20,7 @@ def temp_audio_dir(tmp_path):
 def test_full_pipeline_user_initiated_conversation(temp_audio_dir):
     # Setup services
     stt_service = STTService()
+    stt_service.transcribe = MagicMock(return_value="hello")
     llm_service = LLMService()
     tts_service = TTSService(output_dir=temp_audio_dir)
     conversation_manager = ConversationManager()
@@ -44,7 +46,7 @@ def test_full_pipeline_user_initiated_conversation(temp_audio_dir):
     assert "ai_text" in result
     assert "audio_path" in result
     
-    assert result["user_text"] == "placeholder text"  # Check STT output
+    assert result["user_text"] == "hello"  # Check STT output
     assert result["ai_text"] == "I am a helpful assistant."  # Check LLM output
     assert os.path.exists(result["audio_path"])  # Check TTS file output
     assert result["audio_path"].endswith(".mp3")
