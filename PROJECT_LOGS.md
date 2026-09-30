@@ -83,6 +83,12 @@
     *   Implemented `FasterWhisperEngine` and updated `STTService` in `backend/app/services/stt_service.py` using `faster-whisper` library.
     *   Validated transcription workflow compatibility with `verify_stt.py`.
     *   Updated integration test suite (`test_integration.py`) and verified all backend tests pass successfully.
+3.  **Local LLM Setup Preparation:**
+    *   Documented robust Windows CPU installation command for `llama-cpp-python` (`--extra-index-url https://abetlen.github.io/llama-cpp-python/whl/cpu`) in `backend/requirements.txt` and `README.md`.
+4.  **Local LLM Integration (`llama-cpp-python` & GGUF):**
+    *   Implemented `LlamaCppEngine` and updated `LLMService` in `backend/app/services/llm_service.py` to load local GGUF models (e.g., Qwen2.5) with child-friendly single-sentence system prompts and graceful test fallbacks.
+    *   Created `backend/app/services/verify_llm.py` verification script for testing local LLM prompt execution.
+    *   Verified all unit and integration tests pass successfully.
 
 ## Phase 6: Refinement, Latency & Final Verification
 **Status:** Pending

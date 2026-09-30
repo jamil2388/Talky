@@ -47,7 +47,7 @@ This file is used to track the major development phases, deliverables, and branc
 ## Phase 5: Real Local AI Services Integration
 - [x] Branch : feature/real-ai-services
 - [x] Implement robust local STT service (e.g., faster-whisper) with proper audio preprocessing and transcription.
-- [ ] Integrate local LLM runner (e.g., Ollama or lightweight transformers/llama-cpp) with strict prompt constraints (simple English, single sentence).
+- [x] Integrate local LLM runner (e.g., Ollama or lightweight transformers/llama-cpp) with strict prompt constraints (simple English, single sentence).
 - [ ] Configure local TTS service to output clean speech audio and support static file serving via FastAPI.
 - [ ] Verify full end-to-end backend integration pipeline with real local models via integration tests.
 
