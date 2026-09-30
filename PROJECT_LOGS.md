@@ -75,7 +75,7 @@
     *   Verified all frontend tests pass successfully (`vitest --run`).
 
 ## Phase 5: Real Local AI Services Integration
-**Status:** In Progress
+**Status:** Completed
 
 ### Steps Performed:
 1.  **Branch Initialization:** Checked out branch `feature/real-ai-services`.
@@ -89,6 +89,11 @@
     *   Implemented `LlamaCppEngine` and updated `LLMService` in `backend/app/services/llm_service.py` to load local GGUF models (e.g., Qwen2.5) with child-friendly single-sentence system prompts and graceful test fallbacks.
     *   Created `backend/app/services/verify_llm.py` verification script for testing local LLM prompt execution.
     *   Verified all unit and integration tests pass successfully.
+5.  **Local TTS & Static File Serving:**
+    *   Mounted `generated_audio/` statically via FastAPI in `backend/app/main.py` (`/audio`).
+    *   Created `backend/app/services/verify_tts.py` verification script for testing text-to-speech audio generation.
+    *   Created `backend/app/services/verify_pipeline.py` verification script for end-to-end pipeline testing (`STT -> LLM -> TTS`).
+    *   Verified full end-to-end backend integration pipeline and test suite successfully.
 
 ## Phase 6: Refinement, Latency & Final Verification
 **Status:** Pending

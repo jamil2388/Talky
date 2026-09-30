@@ -3,7 +3,7 @@ import os
 import uuid
 
 class TTSService:
-    def __init__(self, output_dir: str = "generated_audio"):
+    def __init__(self, output_dir: str = "../../generated_audio"):
         self.output_dir = output_dir
         if not os.path.exists(self.output_dir):
             os.makedirs(self.output_dir)
@@ -20,6 +20,7 @@ class TTSService:
         self.engine.setProperty('rate', 150)
         
         # Save to file
+        # self.engine.say(text)
         self.engine.save_to_file(text, filepath)
         self.engine.runAndWait()
         
