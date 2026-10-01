@@ -12,7 +12,7 @@ router = APIRouter()
 
 def get_backend_dir() -> str:
     # backend/app/api/conversation.py -> backend/
-    return os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+    return os.path.abspath(os.path.join(os.path.dirname(__file__), "../.."))
 
 def get_next_recorded_filename(recorded_dir: str = None) -> str:
     if recorded_dir is None:
@@ -47,7 +47,11 @@ async def start_conversation(
     conversation_service: ConversationService = Depends(get_conversation_service)
 ):
     result = conversation_service.start_conversation()
-    return StartConversationResponse(ai_text=result["ai_text"])
+    audio_filename = os.path.basename(result["audio_path"])
+    return StartConversationResponse(
+        ai_text=result["ai_text"],
+        audio_url=f"/audio/{audio_filename}"
+    )
 
 @router.post("", response_model=ConversationResponse)
 async def process_conversation(
@@ -60,9 +64,11 @@ async def process_conversation(
         buffer.write(await audio.read())
     
     result = conversation_service.process_user_turn(recorded_path)
+    audio_filename = os.path.basename(result["audio_path"])
             
     return ConversationResponse(
         user_text=result["user_text"],
-        ai_text=result["ai_text"]
+        ai_text=result["ai_text"],
+        audio_url=f"/audio/{audio_filename}"
     )
 
