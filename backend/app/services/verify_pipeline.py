@@ -16,12 +16,18 @@ from app.services.tts_service import TTSService
 from app.services.conversation_manager import ConversationManager
 from app.services.conversation_service import ConversationService
 
+# Find the absolute path of the backend, and based on that navigate to the rest
+def get_backend_dir() -> str:
+    # backend/app/services/verify_pipeline.py -> backend/
+    return os.path.abspath(os.path.join(os.path.dirname(__file__), "../.."))
+
 def main():
     if len(sys.argv) < 2:
         print("Usage: python verify_pipeline.py <path_to_audio_file>")
         sys.exit(1)
 
     audio_path = sys.argv[1]
+    audio_path = os.path.join(get_backend_dir(),audio_path)
     if not os.path.exists(audio_path):
         print(f"Error: Audio file not found at {audio_path}")
         sys.exit(1)

@@ -36,7 +36,7 @@ desktop.ini
 *.swo
 
 # Generated files
-backend/generated_audio/
+backend/audio/
 
 # External files
 backend/llm_models/

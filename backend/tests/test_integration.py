@@ -50,7 +50,7 @@ def test_full_pipeline_user_initiated_conversation(temp_audio_dir):
     assert isinstance(result["ai_text"], str)
     assert len(result["ai_text"]) > 0  # Check LLM output
     assert os.path.exists(result["audio_path"])  # Check TTS file output
-    assert result["audio_path"].endswith(".mp3")
+    assert result["audio_path"].endswith(".wav")
     assert temp_audio_dir in result["audio_path"]
 
 def test_full_pipeline_ai_initiated_conversation(temp_audio_dir):
@@ -76,4 +76,4 @@ def test_full_pipeline_ai_initiated_conversation(temp_audio_dir):
     assert isinstance(result["ai_text"], str)
     assert len(result["ai_text"]) > 0
     assert os.path.exists(result["audio_path"])
-    assert result["audio_path"].endswith(".mp3")
+    assert result["audio_path"].endswith(".wav")
