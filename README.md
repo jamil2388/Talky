@@ -49,6 +49,7 @@ python -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
 pip install -r requirements.txt
 ```
+*(Note for Windows CPU users installing `llama-cpp-python`: if standard pip install fails, use: `pip install llama-cpp-python --only-binary=llama-cpp-python --force-reinstall --extra-index-url https://abetlen.github.io/llama-cpp-python/whl/cpu`)*
 
 ### 3. Frontend Setup:
 ```bash

@@ -14,7 +14,8 @@ def test_tts_service_generates_audio_file(tmp_path):
     
     # Verification
     assert os.path.exists(audio_path)
-    assert audio_path.endswith(".mp3")
+    assert audio_path.endswith(".wav")
+    assert "g_1.wav" in audio_path
     assert str(output_dir) in audio_path
     
     # Cleanup

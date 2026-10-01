@@ -34,3 +34,9 @@ desktop.ini
 .vscode/
 *.swp
 *.swo
+
+# Generated files
+backend/audio/
+
+# External files
+backend/llm_models/
