@@ -13,7 +13,6 @@ class TTSService:
         self.output_dir = output_dir
         if not os.path.exists(self.output_dir):
             os.makedirs(self.output_dir, exist_ok=True)
-        self.engine = pyttsx3.init()
 
     def _get_next_filename(self) -> str:
         max_num = 0
@@ -33,12 +32,11 @@ class TTSService:
         
         filepath = self._get_next_filename()
         
-        # Configure pyttsx3
-        self.engine.setProperty('rate', 150)
-        
-        # Save to file
-        self.engine.save_to_file(text, filepath)
-        self.engine.runAndWait()
+        # Configure and run pyttsx3 fresh per call
+        engine = pyttsx3.init()
+        engine.setProperty('rate', 150)
+        engine.save_to_file(text, filepath)
+        engine.runAndWait()
         
         return filepath
 

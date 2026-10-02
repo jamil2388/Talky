@@ -12,7 +12,7 @@ router = APIRouter()
 
 def get_backend_dir() -> str:
     # backend/app/api/conversation.py -> backend/
-    return os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+    return os.path.abspath(os.path.join(os.path.dirname(__file__), "../.."))
 
 def get_next_recorded_filename(recorded_dir: str = None) -> str:
     if recorded_dir is None:
@@ -43,26 +43,32 @@ def get_conversation_service():
     )
 
 @router.post("/start", response_model=StartConversationResponse)
-async def start_conversation(
+def start_conversation(
     conversation_service: ConversationService = Depends(get_conversation_service)
 ):
     result = conversation_service.start_conversation()
-    return StartConversationResponse(ai_text=result["ai_text"])
+    audio_filename = os.path.basename(result["audio_path"])
+    return StartConversationResponse(
+        ai_text=result["ai_text"],
+        audio_url=f"/audio/{audio_filename}"
+    )
 
 @router.post("", response_model=ConversationResponse)
-async def process_conversation(
+def process_conversation(
     audio: UploadFile = File(...),
     conversation_service: ConversationService = Depends(get_conversation_service)
 ):
     # Save recorded file to backend/audio/recorded/r_N.wav
     recorded_path = get_next_recorded_filename()
     with open(recorded_path, "wb") as buffer:
-        buffer.write(await audio.read())
+        buffer.write(audio.file.read())
     
     result = conversation_service.process_user_turn(recorded_path)
+    audio_filename = os.path.basename(result["audio_path"])
             
     return ConversationResponse(
         user_text=result["user_text"],
-        ai_text=result["ai_text"]
+        ai_text=result["ai_text"],
+        audio_url=f"/audio/{audio_filename}"
     )
 

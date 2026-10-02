@@ -58,7 +58,7 @@
     *   Verified that all API tests now pass without deadlocks.
 
 ## Phase 4: Frontend Development & Component Testing
-**Status:** In Progress
+**Status:** Completed
 
 ### Steps Performed:
 1.  **Project Initialization:** Initialized React frontend with Vite.
@@ -73,6 +73,11 @@
     *   Implemented `AudioRecorder` component in `frontend/src/components/AudioRecorder.jsx` and styling in `AudioRecorder.css`.
     *   Resolved media stream mock handling (`getTracks`) to ensure clean test runs without unhandled exceptions.
     *   Verified all frontend tests pass successfully (`vitest --run`).
+5.  **Conversation Component & App Assembly (TDD):**
+    *   Implemented `Conversation.jsx` component supporting AI conversation initiation, voice recording, message history log rendering, and automatic audio playback.
+    *   Implemented `Conversation.test.jsx` unit test suite and verified all frontend component tests pass successfully.
+    *   Assembled the full frontend application in `App.jsx`.
+    *   Resolved path resolution in `backend/app/main.py` using `get_backend_dir()` to prevent nested `backend/backend/audio` folder creation when starting uvicorn from `backend/`.
 
 ## Phase 5: Real Local AI Services Integration
 **Status:** Completed
@@ -94,6 +99,10 @@
     *   Implemented absolute path resolution anchored to `__file__` across `TTSService` and `conversation.py` to ensure files are always saved under the correct `backend/audio/` directories regardless of execution CWD.
     *   Mounted `backend/audio/generated/` statically via FastAPI in `backend/app/main.py` (`/audio`).
     *   Created verification scripts (`verify_tts.py`, `verify_pipeline.py`) and verified all test suites successfully.
+6.  **Live Integration Bug Fixes & Refinements:**
+    *   Added `CORSMiddleware` to `backend/app/main.py` to enable cross-origin communication between the Vite frontend (`localhost:5173`) and FastAPI backend (`localhost:8000`).
+    *   Resolved `pyttsx3` re-entrant execution deadlock by initializing the engine fresh per call (`pyttsx3.init()`) in `TTSService`.
+    *   Converted FastAPI conversation endpoints (`/start`, `""`) from `async def` to synchronous `def` so FastAPI executes blocking local AI inference (Faster-Whisper, Llama.cpp, pyttsx3) in its worker threadpool, preventing event loop starvation.
 
 ## Phase 6: Refinement, Latency & Final Verification
 **Status:** Pending
