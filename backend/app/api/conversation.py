@@ -43,7 +43,7 @@ def get_conversation_service():
     )
 
 @router.post("/start", response_model=StartConversationResponse)
-async def start_conversation(
+def start_conversation(
     conversation_service: ConversationService = Depends(get_conversation_service)
 ):
     result = conversation_service.start_conversation()
@@ -54,14 +54,14 @@ async def start_conversation(
     )
 
 @router.post("", response_model=ConversationResponse)
-async def process_conversation(
+def process_conversation(
     audio: UploadFile = File(...),
     conversation_service: ConversationService = Depends(get_conversation_service)
 ):
     # Save recorded file to backend/audio/recorded/r_N.wav
     recorded_path = get_next_recorded_filename()
     with open(recorded_path, "wb") as buffer:
-        buffer.write(await audio.read())
+        buffer.write(audio.file.read())
     
     result = conversation_service.process_user_turn(recorded_path)
     audio_filename = os.path.basename(result["audio_path"])

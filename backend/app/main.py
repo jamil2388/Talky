@@ -1,9 +1,18 @@
 import os
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
+from fastapi.middleware.cors import CORSMiddleware
 from app.api.conversation import router as conversation_router
 
 app = FastAPI(title="Local Voice Conversation Assistant")
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:5173", "http://127.0.0.1:5173", "http://localhost:3000", "http://127.0.0.1:3000"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 def get_backend_dir() -> str:
     # backend/app/main.py -> backend/

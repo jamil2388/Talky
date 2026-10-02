@@ -99,6 +99,10 @@
     *   Implemented absolute path resolution anchored to `__file__` across `TTSService` and `conversation.py` to ensure files are always saved under the correct `backend/audio/` directories regardless of execution CWD.
     *   Mounted `backend/audio/generated/` statically via FastAPI in `backend/app/main.py` (`/audio`).
     *   Created verification scripts (`verify_tts.py`, `verify_pipeline.py`) and verified all test suites successfully.
+6.  **Live Integration Bug Fixes & Refinements:**
+    *   Added `CORSMiddleware` to `backend/app/main.py` to enable cross-origin communication between the Vite frontend (`localhost:5173`) and FastAPI backend (`localhost:8000`).
+    *   Resolved `pyttsx3` re-entrant execution deadlock by initializing the engine fresh per call (`pyttsx3.init()`) in `TTSService`.
+    *   Converted FastAPI conversation endpoints (`/start`, `""`) from `async def` to synchronous `def` so FastAPI executes blocking local AI inference (Faster-Whisper, Llama.cpp, pyttsx3) in its worker threadpool, preventing event loop starvation.
 
 ## Phase 6: Refinement, Latency & Final Verification
 **Status:** Pending
