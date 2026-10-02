@@ -36,13 +36,13 @@ This file is used to track the major development phases, deliverables, and branc
 - [x] **Update endpoints in `app/api/conversation.py` to route real requests through the complete orchestration pipeline.**
 - [x] **Verify the full pipeline's functional success using integration tests offline.**
 
-## Phase 4: Frontend Development & Component Testing (Paused for Phase 5)
+## Phase 4: Frontend Development & Component Testing
 - [x] Branch : feature/frontend-ui
 - [x] Initialize the React project with Vite, setup test suites (Jest/React Testing Library) and write basic component unit tests.
 - [x] Develop and test `AudioRecorder.jsx` for recording voice from browser microphone and handling state.
 - [x] Implement API helper in `api.js` to send recorded audio blobs and receive JSON/Audio outputs.
-- [ ] **Pending (Deferred to after Phase 5):** Develop and test `Conversation.jsx` for displaying history logs and initiating conversations.
-- [ ] **Pending (Deferred to after Phase 5):** Assemble all frontend parts in `App.jsx`, running local component/integration tests to ensure correct frontend flow with live backend.
+- [x] Develop and test `Conversation.jsx` for displaying history logs and initiating conversations.
+- [x] Assemble all frontend parts in `App.jsx`, running local component/integration tests to ensure correct frontend flow with live backend.
 
 ## Phase 5: Real Local AI Services Integration
 - [x] Branch : feature/real-ai-services

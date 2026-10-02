@@ -58,7 +58,7 @@
     *   Verified that all API tests now pass without deadlocks.
 
 ## Phase 4: Frontend Development & Component Testing
-**Status:** In Progress
+**Status:** Completed
 
 ### Steps Performed:
 1.  **Project Initialization:** Initialized React frontend with Vite.
@@ -73,6 +73,11 @@
     *   Implemented `AudioRecorder` component in `frontend/src/components/AudioRecorder.jsx` and styling in `AudioRecorder.css`.
     *   Resolved media stream mock handling (`getTracks`) to ensure clean test runs without unhandled exceptions.
     *   Verified all frontend tests pass successfully (`vitest --run`).
+5.  **Conversation Component & App Assembly (TDD):**
+    *   Implemented `Conversation.jsx` component supporting AI conversation initiation, voice recording, message history log rendering, and automatic audio playback.
+    *   Implemented `Conversation.test.jsx` unit test suite and verified all frontend component tests pass successfully.
+    *   Assembled the full frontend application in `App.jsx`.
+    *   Resolved path resolution in `backend/app/main.py` using `get_backend_dir()` to prevent nested `backend/backend/audio` folder creation when starting uvicorn from `backend/`.
 
 ## Phase 5: Real Local AI Services Integration
 **Status:** Completed
