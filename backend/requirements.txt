@@ -7,5 +7,6 @@ httpx>=0.24.0
 pyttsx3>=2.90
 faster-whisper>=0.10.0
 llama-cpp-python>=0.2.0
+piper-tts>=1.8.0
 # Note for Windows CPU: pip install llama-cpp-python --only-binary=llama-cpp-python --force-reinstall --extra-index-url https://abetlen.github.io/llama-cpp-python/whl/cpu
 
