@@ -105,4 +105,10 @@
     *   Converted FastAPI conversation endpoints (`/start`, `""`) from `async def` to synchronous `def` so FastAPI executes blocking local AI inference (Faster-Whisper, Llama.cpp, pyttsx3) in its worker threadpool, preventing event loop starvation.
 
 ## Phase 6: Refinement, Latency & Final Verification
-**Status:** Pending
+**Status:** In Progress
+
+### Steps Performed:
+1.  **TTS Voice Humanization (Piper TTS):**
+    *   Migrated `TTSService` in `backend/app/services/tts_service.py` from `pyttsx3` to `piper-tts` using the local high-quality voice model (`backend/voices/en_US-hfc_female-medium.onnx`).
+    *   Configured `PiperVoice.load()` and chunk-based wav synthesis (`voice.synthesize(text)`) writing PCM int16 audio frames.
+    *   Verified successful end-to-end integration and unit/integration test execution (`pytest`).

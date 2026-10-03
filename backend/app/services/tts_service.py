@@ -1,18 +1,25 @@
-import pyttsx3
+import wave
 import os
 import re
+from piper.voice import PiperVoice
 
 def get_backend_dir() -> str:
     # backend/app/services/tts_service.py -> backend/
     return os.path.abspath(os.path.join(os.path.dirname(__file__), "../.."))
 
 class TTSService:
-    def __init__(self, output_dir: str = None):
+    def __init__(self, model_path: str = None, output_dir: str = None):
+        if model_path is None:
+            model_path = os.path.join(get_backend_dir(), "voices", "en_US-hfc_female-medium.onnx")
         if output_dir is None:
             output_dir = os.path.join(get_backend_dir(), "audio", "generated")
+        self.model_path = model_path
         self.output_dir = output_dir
         if not os.path.exists(self.output_dir):
             os.makedirs(self.output_dir, exist_ok=True)
+            
+        # Load Piper voice model
+        self.voice = PiperVoice.load(self.model_path)
 
     def _get_next_filename(self) -> str:
         max_num = 0
@@ -32,11 +39,13 @@ class TTSService:
         
         filepath = self._get_next_filename()
         
-        # Configure and run pyttsx3 fresh per call
-        engine = pyttsx3.init()
-        engine.setProperty('rate', 150)
-        engine.save_to_file(text, filepath)
-        engine.runAndWait()
+        with wave.open(filepath, "wb") as wav_file:
+            # Configure wav file parameters based on voice config
+            wav_file.setnchannels(1)
+            wav_file.setsampwidth(2)
+            wav_file.setframerate(self.voice.config.sample_rate)
+            
+            for chunk in self.voice.synthesize(text):
+                wav_file.writeframes(chunk.audio_int16_bytes)
         
         return filepath
-

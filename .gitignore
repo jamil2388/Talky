@@ -40,3 +40,4 @@ backend/audio/
 
 # External files
 backend/llm_models/
+backend/voices/

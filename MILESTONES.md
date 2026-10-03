@@ -55,6 +55,6 @@ This file is used to track the major development phases, deliverables, and branc
 - [ ] Branch : feature/refinement-optimization
 - [ ] Add latency instrumentation tests to benchmark local pipeline execution.
 - [ ] Refine local model configurations and quantization to optimize execution speed on standard hardware.
-- [ ] Humanize the voice of the TTS
+- [x] Humanize the voice of the TTS
 - [ ] Plan another phase for adding knowledge base for the LLM
 - [ ] Perform full-pipeline manual and automated testing to ensure offline reliability and child-appropriate conversation guidelines.
