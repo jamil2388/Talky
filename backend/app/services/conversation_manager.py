@@ -1,7 +1,8 @@
 from typing import List, Dict
+from app.config import MAX_TURNS
 
 class ConversationManager:
-    def __init__(self, max_turns: int = 3):
+    def __init__(self, max_turns: int = MAX_TURNS):
         self.max_turns = max_turns
         self.history: List[Dict[str, str]] = []
 

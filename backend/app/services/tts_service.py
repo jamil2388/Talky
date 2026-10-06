@@ -2,17 +2,14 @@ import wave
 import os
 import re
 from piper.voice import PiperVoice
-
-def get_backend_dir() -> str:
-    # backend/app/services/tts_service.py -> backend/
-    return os.path.abspath(os.path.join(os.path.dirname(__file__), "../.."))
+from app.config import VOICE_MODEL_PATH, GENERATED_AUDIO_DIR, MAX_AUDIO_FILES, cleanup_audio_files
 
 class TTSService:
     def __init__(self, model_path: str = None, output_dir: str = None):
         if model_path is None:
-            model_path = os.path.join(get_backend_dir(), "voices", "en_US-hfc_female-medium.onnx")
+            model_path = VOICE_MODEL_PATH
         if output_dir is None:
-            output_dir = os.path.join(get_backend_dir(), "audio", "generated")
+            output_dir = GENERATED_AUDIO_DIR
         self.model_path = model_path
         self.output_dir = output_dir
         if not os.path.exists(self.output_dir):
@@ -47,5 +44,8 @@ class TTSService:
             
             for chunk in self.voice.synthesize(text):
                 wav_file.writeframes(chunk.audio_int16_bytes)
+        
+        # Cleanup old generated audio files exceeding MAX_AUDIO_FILES
+        cleanup_audio_files(self.output_dir, MAX_AUDIO_FILES)
         
         return filepath

@@ -5,18 +5,15 @@ from app.services.llm_service import LLMService
 from app.services.tts_service import TTSService
 from app.services.conversation_manager import ConversationManager
 from app.services.conversation_service import ConversationService
+from app.config import RECORDED_AUDIO_DIR, GENERATED_AUDIO_DIR, MAX_AUDIO_FILES, cleanup_audio_files
 import os
 import re
 
 router = APIRouter()
 
-def get_backend_dir() -> str:
-    # backend/app/api/conversation.py -> backend/
-    return os.path.abspath(os.path.join(os.path.dirname(__file__), "../.."))
-
 def get_next_recorded_filename(recorded_dir: str = None) -> str:
     if recorded_dir is None:
-        recorded_dir = os.path.join(get_backend_dir(), "audio", "recorded")
+        recorded_dir = RECORDED_AUDIO_DIR
     if not os.path.exists(recorded_dir):
         os.makedirs(recorded_dir, exist_ok=True)
     max_num = 0
@@ -33,7 +30,7 @@ def get_next_recorded_filename(recorded_dir: str = None) -> str:
 def get_conversation_service():
     stt_service = STTService()
     llm_service = LLMService()
-    tts_service = TTSService(output_dir=os.path.join(get_backend_dir(), "audio", "generated"))
+    tts_service = TTSService(output_dir=GENERATED_AUDIO_DIR)
     conversation_manager = ConversationManager()
     return ConversationService(
         stt_service=stt_service,
@@ -59,9 +56,13 @@ def process_conversation(
     conversation_service: ConversationService = Depends(get_conversation_service)
 ):
     # Save recorded file to backend/audio/recorded/r_N.wav
-    recorded_path = get_next_recorded_filename()
+    recorded_dir = RECORDED_AUDIO_DIR
+    recorded_path = get_next_recorded_filename(recorded_dir)
     with open(recorded_path, "wb") as buffer:
         buffer.write(audio.file.read())
+    
+    # Cleanup old recorded audio files exceeding MAX_AUDIO_FILES
+    cleanup_audio_files(recorded_dir, MAX_AUDIO_FILES)
     
     result = conversation_service.process_user_turn(recorded_path)
     audio_filename = os.path.basename(result["audio_path"])

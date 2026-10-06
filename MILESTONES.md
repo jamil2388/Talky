@@ -52,7 +52,9 @@ This file is used to track the major development phases, deliverables, and branc
 - [x] Verify full end-to-end backend integration pipeline with real local models via integration tests.
 
 ## Phase 6: Refinement, Latency & Final Verification
-- [ ] Branch : feature/refinement-optimization
+- [x] Branch : feature/refinement-optimization
+- [x] Keep up to N recorded and generated audio files
+- [x] Create a central config file for the parameters for backend and frontend
 - [ ] Add latency instrumentation tests to benchmark local pipeline execution.
 - [ ] Refine local model configurations and quantization to optimize execution speed on standard hardware.
 - [x] Humanize the voice of the TTS
