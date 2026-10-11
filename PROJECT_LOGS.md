@@ -112,3 +112,13 @@
     *   Migrated `TTSService` in `backend/app/services/tts_service.py` from `pyttsx3` to `piper-tts` using the local high-quality voice model (`backend/voices/en_US-hfc_female-medium.onnx`).
     *   Configured `PiperVoice.load()` and chunk-based wav synthesis (`voice.synthesize(text)`) writing PCM int16 audio frames.
     *   Verified successful end-to-end integration and unit/integration test execution (`pytest`).
+2.  **Central Configuration Files:**
+    *   Created `backend/app/config.py` to centralize backend parameters (`MAX_AUDIO_FILES = 20`, `MAX_TURNS = 3`, model paths, and audio directories).
+    *   Created `frontend/src/config.js` to centralize frontend configuration parameters (`API_BASE_URL`).
+3.  **Audio File Retention & Cleanup:**
+    *   Implemented `cleanup_audio_files` utility in `backend/app/config.py` to automatically prune oldest `.wav` files when generated or recorded audio file counts exceed `MAX_AUDIO_FILES`.
+    *   Integrated cleanup calls into `TTSService` (`generated/`) and conversation endpoint (`recorded/`).
+    *   Added unit test coverage (`test_cleanup_audio_files_prunes_old_files`) in `backend/tests/test_tts_service.py` and verified all backend tests pass successfully.
+4.  **Knowledge Base (RAG) Planning:**
+    *   Planned and expanded Phase 7 (`feature/knowledge-base`) for adding a local knowledge base (RAG) to the LLM for offline fact-retrieval and context augmentation.
+    *   Updated `MILESTONES.md` and marked the LLM knowledge base planning step as completed.

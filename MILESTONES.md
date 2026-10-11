@@ -52,9 +52,26 @@ This file is used to track the major development phases, deliverables, and branc
 - [x] Verify full end-to-end backend integration pipeline with real local models via integration tests.
 
 ## Phase 6: Refinement, Latency & Final Verification
-- [ ] Branch : feature/refinement-optimization
+- [x] Branch : feature/refinement-optimization
+- [x] Keep up to N recorded and generated audio files
+- [x] Create a central config file for the parameters for backend and frontend
 - [ ] Add latency instrumentation tests to benchmark local pipeline execution.
 - [ ] Refine local model configurations and quantization to optimize execution speed on standard hardware.
 - [x] Humanize the voice of the TTS
-- [ ] Plan another phase for adding knowledge base for the LLM
+- [x] Plan another phase for adding knowledge base for the LLM
 - [ ] Perform full-pipeline manual and automated testing to ensure offline reliability and child-appropriate conversation guidelines.
+
+## Phase 7: Local Knowledge Base (RAG) Integration for LLM
+- [ ] Branch : `feature/knowledge-base`
+- [ ] **7.1: Document Storage & Chunking Service (TDD)**
+  - [ ] Write unit tests for loading, parsing, and chunking local source documents (e.g., markdown/text files placed in a new `backend/knowledge/` directory).
+  - [ ] Implement `KnowledgeService` in `backend/app/services/knowledge_service.py` to manage document parsing and chunk indexing.
+- [ ] **7.2: Local Retrieval Mechanism (TDD)**
+  - [ ] Write tests for similarity/relevance retrieval (using lightweight local embedding models or efficient keyword retrieval like BM25 to operate offline on CPU).
+  - [ ] Implement the retrieval module to fetch top-K relevant knowledge chunks for a given user query.
+- [ ] **7.3: LLM Context Augmentation & Prompt Integration (TDD)**
+  - [ ] Write integration tests verifying that retrieved knowledge snippets are correctly injected into the LLM prompt.
+  - [ ] Update `LLMService` and `ConversationService` to seamlessly blend retrieved context while strictly enforcing child-friendly, single-sentence response constraints.
+- [ ] **7.4: Verification & End-to-End Testing**
+  - [ ] Create verification scripts (`verify_knowledge.py`) and update backend integration tests (`test_integration.py`).
+  - [ ] Perform full pipeline validation ensuring offline speed, memory efficiency, and accurate fact retrieval.

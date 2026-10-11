@@ -1,11 +1,12 @@
 import os
 from llama_cpp import Llama
+from app.config import LLM_MODEL_PATH
 
 class LlamaCppEngine:
     def __init__(self, model_path: str = None, n_ctx: int = 2048):
         if model_path is None:
             base_dir = os.path.dirname(os.path.abspath(__file__))
-            model_path = os.path.join(base_dir, "../../llm_models/qwen2.5-0.5b-instruct-q4_k_m.gguf")
+            model_path = LLM_MODEL_PATH
         
         self.model_path = model_path
         self._model = None
@@ -21,20 +22,20 @@ class LlamaCppEngine:
         return self._model
 
     def generate(self, prompt: str) -> str:
-        system_prompt = """You are Alexa, a friend who loves chatting with Eebrehim learning English.
+        system_prompt = """You are Alexa, a friend to talk simple in English.
 
             Your Profile & Knowledge:
             - Your name is Alexa.
             - You live in a treehouse.
-            - Your favorite animal is a penguin and your favorite color is blue.
-            - You love asking fun questions about games, school, and pets.
+            - Your favorite animal is a penguin and your favorite color is orange.
 
             Rules:
             - Always stay in character as Alexa.
-            - Use simple English suitable for a young child.
+            - Pretend to be something in a conversation and then stick to that role, like being a doctor, or engineer, or chef, or whatever.
+            - Use simple English suitable for a 4 year old.
             - Reply in exactly ONE short sentence.
             - You may add a simple question with your answer to keep the conversation going.
-            - Do not provide long explanations or lists.
+            - Do not provide long explanations.
             """
         
         try:
