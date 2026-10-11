@@ -119,3 +119,6 @@
     *   Implemented `cleanup_audio_files` utility in `backend/app/config.py` to automatically prune oldest `.wav` files when generated or recorded audio file counts exceed `MAX_AUDIO_FILES`.
     *   Integrated cleanup calls into `TTSService` (`generated/`) and conversation endpoint (`recorded/`).
     *   Added unit test coverage (`test_cleanup_audio_files_prunes_old_files`) in `backend/tests/test_tts_service.py` and verified all backend tests pass successfully.
+4.  **Knowledge Base (RAG) Planning:**
+    *   Planned and expanded Phase 7 (`feature/knowledge-base`) for adding a local knowledge base (RAG) to the LLM for offline fact-retrieval and context augmentation.
+    *   Updated `MILESTONES.md` and marked the LLM knowledge base planning step as completed.
