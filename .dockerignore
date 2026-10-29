@@ -1,0 +1,14 @@
+node_modules
+venv
+backend/venv
+backend/.pytest_cache
+backend/llm_models
+.git
+.idea
+.pytest_cache
+dist
+*.pyc
+__pycache__
+backend/audio/recorded/*
+backend/audio/generated/*
+.env

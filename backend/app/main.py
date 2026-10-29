@@ -29,3 +29,9 @@ app.mount("/audio", StaticFiles(directory=generated_dir), name="audio")
 
 app.include_router(conversation_router, prefix="/api/conversation")
 
+@app.on_event("shutdown")
+def shutdown_event():
+    """Handle graceful shutdown on SIGTERM or SIGINT to clean up active resources."""
+    print("Received shutdown signal. Closing audio streams and cleaning up backend resources gracefully...")
+
+

@@ -34,6 +34,27 @@ The entire application runs fully offline, ensuring high privacy and zero cloud 
 - Local model runtime dependencies (e.g., ffmpeg for audio processing, local LLM runner like Ollama, or Python-native libraries)
 - Microphone/Audio recording hardware on host machine
 
+## Running with Docker (Docker Compose)
+
+You can run the application using Docker Compose, which spins up separate containers for the FastAPI backend (Python 3.13) and the React frontend (served via Nginx with automated API/audio proxying).
+
+### 1. Build and Start the Containers:
+```bash
+docker compose up --build
+```
+*(Or run in background mode: `docker compose up --build -d`)*
+
+### 2. Access the Application:
+- **Frontend UI:** Open `http://localhost:5173` in your browser.
+- **Backend API Docs (Swagger):** Open `http://localhost:8000/docs`.
+
+### 3. Stop the Containers:
+```bash
+docker compose down
+```
+
+*(Note: Ensure your local LLM models and voice models are placed in `backend/llm_models/` and `backend/voices/` before starting).*
+
 ## Installation
 
 ### 1. Clone the repository:

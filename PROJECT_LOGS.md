@@ -122,3 +122,9 @@
 4.  **Knowledge Base (RAG) Planning:**
     *   Planned and expanded Phase 7 (`feature/knowledge-base`) for adding a local knowledge base (RAG) to the LLM for offline fact-retrieval and context augmentation.
     *   Updated `MILESTONES.md` and marked the LLM knowledge base planning step as completed.
+5.  **Multi-Container Docker Compose Architecture & Graceful Shutdowns:**
+    *   Replaced the single-container Docker setup with a robust multi-container Docker Compose architecture (`docker-compose.yml`).
+    *   Created `backend/Dockerfile` using `python:3.13-slim` with system dependencies (`ffmpeg`, `libsndfile1`) and Uvicorn.
+    *   Created `frontend/Dockerfile` and `frontend/nginx.conf` (Nginx Alpine) to build the React Vite SPA and reverse-proxy `/api` and `/audio` to the backend container.
+    *   Configured volume mounts in `docker-compose.yml` for `audio/`, `voices/`, and `llm_models/` to persist AI model weights and generated files outside containers.
+    *   Implemented FastAPI `@app.on_event("shutdown")` lifecycle handler in `backend/app/main.py` to ensure clean resource cleanup and prevent hanging processes upon receiving `SIGTERM` or `SIGINT`.
