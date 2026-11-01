@@ -128,3 +128,7 @@
     *   Created `frontend/Dockerfile` and `frontend/nginx.conf` (Nginx Alpine) to build the React Vite SPA and reverse-proxy `/api` and `/audio` to the backend container.
     *   Configured volume mounts in `docker-compose.yml` for `audio/`, `voices/`, and `llm_models/` to persist AI model weights and generated files outside containers.
     *   Implemented FastAPI `@app.on_event("shutdown")` lifecycle handler in `backend/app/main.py` to ensure clean resource cleanup and prevent hanging processes upon receiving `SIGTERM` or `SIGINT`.
+6.  **Docker Build Optimization & Fixes:**
+    *   Created `backend/.dockerignore` to exclude massive local assets (`llm_models`, `voices`, `venv`, cached/audio files) from the backend build context, reducing context transfer size from ~970MB to kilobytes.
+    *   Created `frontend/.dockerignore` to exclude `node_modules` and `dist` from the frontend build context.
+    *   Updated `frontend/Dockerfile` from `npm ci` to `npm install` for robust container dependency resolution.
